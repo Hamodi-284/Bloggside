@@ -3,7 +3,21 @@
 Define ( 'DB_HOST', 'localhost' );
 Define ( 'DB_USERNAME', 'root' );
 Define ( 'DB_PASSWORD', '' );
-Define ( 'DB_DATABASE', 'blogg' );
+Define ( 'DB_DATABASE', 'hamodi' );
+
+    function db_connect() {
+       $mysqli= new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+        if(!$mysqli) {
+          die('Something went wrong: ' . mysqli_error());
+        } 
+         mysqli_set_charset($mysqli, 'utf8');
+         return $mysqli;
+    }
+
+    function db_close($connect) {
+        mysqli_close($connect);
+    }
 
 
     function getUser ($username) {

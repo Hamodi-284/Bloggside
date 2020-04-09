@@ -31,8 +31,6 @@
         <div class="col-xl-6">
             <?php 
                 if(isset($_POST['submit'])) {
-                   echo $_POST['kategori'];
-
                    $sql = "SELECT * 
                            FROM category 
                            INNER JOIN postcategory ON category.id = postcategory.id 
@@ -44,13 +42,7 @@
                         $blog_name = $row['name'];
                         $blog_title = $row['title'];
                         switch ($_POST['kategori'] == $blog_name) {
-                        case 'Sport':
-                           echo '<p>' . $blog_title . '</p>';
-                           break;
-                        case 'Skjønnhet':
-                           echo '<p>' . $blog_title . '</p>';
-                           break;
-                        case 'Biler':
+                        case $blog_name:
                            echo '<p>' . $blog_title . '</p>';
                            break;
                         default:
